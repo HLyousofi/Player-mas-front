@@ -1,0 +1,6 @@
+admin-token:['create','update','delete'],
+create-token:['create'],
+update-token:['update'],
+delete-token:['delete'],
+none-token:['none'],
+
