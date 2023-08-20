@@ -27,7 +27,7 @@ export default function Index(props){
         }, [reloaded, createRight, updateRight, deleteRight]);
 
         const fetchMatches = async () =>{
-                axiosClient.get('v1/matches/').then((response => setMatches(response.data))).catch(error => {
+                axiosClient.get('v1/matches/').then(((response) => {setMatches(response.data);})).catch(error => {
                     console.error('An error occurred while show the matchs. Please try again later.');
                 })
         }

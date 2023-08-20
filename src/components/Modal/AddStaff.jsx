@@ -135,16 +135,27 @@ function AddStaff(props)  {
         setShowAddStaff(true);
     };
 
+    const setBeneficiaryId = (e) => {
+        return new Promise((resolve, reject) => {
+            setContract(prevState => ({
+                ...prevState,
+                beneficiaryId :  e
+            }),() => {
+                resolve();
+            });
+        });
+    }
+
     
 
-    const setBeneficiaryId = (e) => {
+    // const setBeneficiaryId = (e) => {
 
-        setContract(prevState => ({
-            ...prevState,
-            beneficiaryId :  e
-        }));
+    //     setContract(prevState => ({
+    //         ...prevState,
+    //         beneficiaryId :  e
+    //     }));
         
-    }
+    // }
 
     
 
@@ -214,7 +225,13 @@ function AddStaff(props)  {
         
        
                 axiosClient.post('/v1/staffs' ,staff).then(
-                        (response) =>{setBeneficiaryId(response.data.data.id)
+                        (response) =>{setBeneficiaryId(response.data.data.id).then(() => {
+                                        console.log(contract.beneficiaryId)
+                                        saveContract();
+                                    }).catch((error) =>{
+                                        reset();
+                                        props.reload('error');
+                                    })
                                     }).catch(error => {
                                         console.error('An error occurred while show the Staff. Please try again later.');
                                         reset();

@@ -323,20 +323,18 @@ class Modal extends Component {
             
             
                 axiosClient.post('/v1/players',this.state.player).then(
-                    (response) => {this.setBeneficiaryId(response.data.data.id).then(() => {
-                        this.saveContract();
-                    }).catch(error => {
-                        console.error('An error occurred while updating the player. Please try again later.');
-                        this.setState({showAddPlayer : false , showAddContract : false });
-                        this.props.reload('error');
-                        });                   
-                }
-                
-            ).catch(error => {
-                console.error('An error occurred while updating the player. Please try again later.');
-                this.setState({showAddPlayer : false , showAddContract : false });
-                this.props.reload('error');
-                });    
+                        (response) => {this.setBeneficiaryId(response.data.data.id).then(() => {
+                                        this.saveContract();
+                                        }).catch(error => {
+                                            console.error('An error occurred while updating the player. Please try again later.');
+                                            this.setState({showAddPlayer : false , showAddContract : false });
+                                            this.props.reload('error');
+                                        });                   
+                                    }).catch(error => {
+                                    console.error('An error occurred while updating the player. Please try again later.');
+                                    this.setState({showAddPlayer : false , showAddContract : false });
+                                    this.props.reload('error');
+                                    });    
             
             
 
@@ -395,7 +393,7 @@ class Modal extends Component {
                                 <div className="flex">
                                     <div className="flex-initial w-[45%]">
                                         <label htmlFor="email"  className="block flex-initial w-[45%] mb-2 text-sm font-medium text-gray-900 ">Contact </label>
-                                        <input type="text" onChange={this.setPhone} value={this.state.player.phone} className={this.state.playerError.phone === false ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-y-red-200 focus:border-blue-500  block w-full p-2.5 ': 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-y-red-200 focus:border-blue-500  block w-full p-2.5' } />
+                                        <input type="tel" onChange={this.setPhone} value={this.state.player.phone} className={this.state.playerError.phone === false ? 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-y-red-200 focus:border-blue-500  block w-full p-2.5 ': 'bg-gray-50 border border-red-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-y-red-200 focus:border-blue-500  block w-full p-2.5' } />
                                     </div>
                                     <div className=" flex-initial w-[45%] ml-[10%]">
                                             <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 ">Position</label>
